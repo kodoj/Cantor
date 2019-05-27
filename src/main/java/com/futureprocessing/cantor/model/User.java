@@ -2,6 +2,7 @@ package com.futureprocessing.cantor.model;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -19,13 +20,16 @@ public class User {
     private int walletId;
     @Column(name = "active")
     private boolean active;
-    @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
-    private Role role;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
     private String password;
+
+    public User() {
+    }
 
     public User(User user) {
         this.id = user.getId();
@@ -33,7 +37,7 @@ public class User {
         this.surname = user.getSurname();
         this.walletId = user.getWalletId();
         this.active = user.isActive();
-        this.role = user.getRole();
+        this.roles = user.getRoles();
         this.email = user.getEmail();
         this.password = user.getPassword();
     }
@@ -78,12 +82,12 @@ public class User {
         this.active = active;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getEmail() {

@@ -12,8 +12,9 @@ public class Role {
     private int id;
     @Column(name = "role_name")
     private String roleName;
-    @OneToOne(mappedBy = "roles")
-    private User user;
+
+    public Role() {
+    }
 
     public int getId() {
         return id;

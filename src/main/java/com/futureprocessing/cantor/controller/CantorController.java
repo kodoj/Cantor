@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CantorController {
 
-    @PreAuthorize("hasAnyRole('USER')")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping
     public String getCantor() {
         return "cantor";

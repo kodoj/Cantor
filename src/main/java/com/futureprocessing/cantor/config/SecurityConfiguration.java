@@ -37,15 +37,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin().permitAll();
     }
 
+//    private PasswordEncoder getPasswordEncoder() {
+//        return new PasswordEncoder() {
+//            @Override
+//            public String encode(CharSequence rawPassword) {
+//                return BCrypt.hashpw(rawPassword.toString(), BCrypt.gensalt(4));
+//            }
+//            @Override
+//            public boolean matches(CharSequence rawPassword, String encodedPassword) {
+//                return BCrypt.checkpw(rawPassword.toString(), encodedPassword);
+//            }
+//        };
+//    }
+
     private PasswordEncoder getPasswordEncoder() {
         return new PasswordEncoder() {
             @Override
-            public String encode(CharSequence rawPassword) {
-                return BCrypt.hashpw(rawPassword.toString(), BCrypt.gensalt(4));
+            public String encode(CharSequence charSequence) {
+                return charSequence.toString();
             }
+
             @Override
-            public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                return BCrypt.checkpw(rawPassword.toString(), encodedPassword);
+            public boolean matches(CharSequence charSequence, String s) {
+                return true;
             }
         };
     }
