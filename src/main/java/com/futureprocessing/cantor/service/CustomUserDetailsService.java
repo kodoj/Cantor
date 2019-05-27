@@ -17,8 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UsersRepository usersRepository;
 
-
-    @Override //Email is unique, in our case it's just account name
+    @Override //Email is unique, so I'm using it as an account name
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> optionalUser = usersRepository.findByEmail(email);
 

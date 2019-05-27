@@ -19,8 +19,9 @@ public class User {
     private int walletId;
     @Column(name = "active")
     private boolean active;
-    @Column(name = "role")
-    private int role;
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+    private Role role;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
@@ -30,7 +31,7 @@ public class User {
         this.id = user.getId();
         this.name = user.getName();
         this.surname = user.getSurname();
-        this.walletId = user.walletId;
+        this.walletId = user.getWalletId();
         this.active = user.isActive();
         this.role = user.getRole();
         this.email = user.getEmail();
@@ -77,11 +78,11 @@ public class User {
         this.active = active;
     }
 
-    public int getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
