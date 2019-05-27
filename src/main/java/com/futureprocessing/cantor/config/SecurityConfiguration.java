@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 @EnableJpaRepositories(basePackageClasses = UsersRepository.class)
@@ -22,5 +24,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.userDetailsService(userDetailsService)
+                .passwordEncoder(new PasswordEncoder() {
+                    @Override
+                    public String encode(CharSequence rawPassword) {
+                        return BCrypt.hashpw(rawPassword.toString(), BCrypt.gensalt(4));
+                    }
+                    @Override
+                    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+                        return BCrypt.checkpw(rawPassword.toString(), encodedPassword);
+                    }
+                });
     }
 }
