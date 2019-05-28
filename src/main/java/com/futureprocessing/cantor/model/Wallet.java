@@ -8,8 +8,6 @@ import java.math.BigDecimal;
 @Table(name = "wallets")
 public class Wallet {
 
-    private static int walletIdTracker = 1;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "wallet_id")
@@ -90,13 +88,5 @@ public class Wallet {
 
     public void setPLN(BigDecimal PLN) {
         this.PLN = PLN;
-    }
-
-    public static int getWalletIdTracker() {
-        return walletIdTracker;
-    }
-
-    public static void walletIdTrackerPlusOne() {
-        walletIdTracker++;
     }
 }

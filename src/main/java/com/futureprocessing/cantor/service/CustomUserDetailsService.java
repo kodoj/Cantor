@@ -43,8 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private User addUserToDatabase(UserRegistrationDto userRegistrationDto) {
         User user = new User();
-        int walletId = createUserWalletId(userRegistrationDto);
-        user.setWallet(walletRepository.getOne(walletId));
+        user.setWallet(saveUserWallet(userRegistrationDto));
         user.setName(userRegistrationDto.getFirstName());
         user.setSurname(userRegistrationDto.getSurname());
         user.setEmail(userRegistrationDto.getEmail());
@@ -53,7 +52,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return usersRepository.save(user);
     }
 
-    private int createUserWalletId(UserRegistrationDto userRegistrationDto) {
+    private Wallet saveUserWallet(UserRegistrationDto userRegistrationDto) {
         Wallet wallet = new Wallet();
         wallet.setUSD(new BigDecimal(userRegistrationDto.getUsd()));
         wallet.setEUR(new BigDecimal(userRegistrationDto.getEur()));
@@ -63,13 +62,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         wallet.setGBP(new BigDecimal(userRegistrationDto.getGbp()));
         wallet.setPLN(new BigDecimal(userRegistrationDto.getPln()));
 
-        return saveWallet(wallet);
-    }
-
-    private int saveWallet(Wallet wallet) {
-        Wallet.walletIdTrackerPlusOne();
-        walletRepository.save(wallet);
-
-        return Wallet.getWalletIdTracker();
+        return walletRepository.save(wallet);
     }
 }
