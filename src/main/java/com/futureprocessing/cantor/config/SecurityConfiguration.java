@@ -34,7 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("**/cantor/**").authenticated()
-                .and().formLogin().permitAll();
+                .and()
+                .formLogin()
+                .permitAll()
+                .defaultSuccessUrl("/cantor/exchange",true);
     }
 
 //    private PasswordEncoder getPasswordEncoder() {
