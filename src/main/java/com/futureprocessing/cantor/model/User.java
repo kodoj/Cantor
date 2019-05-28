@@ -16,7 +16,8 @@ public class User {
     private String name;
     @Column(name = "surname")
     private String surname;
-    @Column(name = "wallet_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wallet_id", referencedColumnName = "wallet_id")
     private int walletId;
     @Column(name = "active")
     private boolean active;
