@@ -1,9 +1,7 @@
 package com.futureprocessing.cantor.service;
 
-import com.futureprocessing.cantor.model.CustomUserDetails;
-import com.futureprocessing.cantor.model.User;
-import com.futureprocessing.cantor.model.UserRegistrationDto;
-import com.futureprocessing.cantor.model.Wallet;
+import com.futureprocessing.cantor.model.*;
+import com.futureprocessing.cantor.repository.UserRolesRepository;
 import com.futureprocessing.cantor.repository.UsersRepository;
 import com.futureprocessing.cantor.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private WalletRepository walletRepository;
 
+    @Autowired
+    private UserRolesRepository userRolesRepository;
+
     @Override //Email is unique, so I'm using it as an account name
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> optionalUser = usersRepository.findByEmail(email);
@@ -32,7 +33,15 @@ public class CustomUserDetailsService implements UserDetailsService {
         return optionalUser.map(CustomUserDetails::new).get();
     }
 
-    public User save(UserRegistrationDto userRegistrationDto) {
+    public void saveUserWithRole(UserRegistrationDto userRegistrationDto) {
+        User currentUser = addUserToDatabase(userRegistrationDto);
+        UserRoles userRoles = new UserRoles();
+        userRoles.setUser_id(currentUser.getId());
+        userRoles.setRoleId(1);
+        userRolesRepository.save(userRoles);
+    }
+
+    private User addUserToDatabase(UserRegistrationDto userRegistrationDto) {
         User user = new User();
         int walletId = createUserWalletId(userRegistrationDto);
         user.setWallet(walletRepository.getOne(walletId));

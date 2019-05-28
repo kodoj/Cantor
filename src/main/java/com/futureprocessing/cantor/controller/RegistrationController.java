@@ -45,7 +45,7 @@ public class RegistrationController {
             return "register.html";
         }
 
-        customUserDetailsService.save(userDto);
+        customUserDetailsService.saveUserWithRole(userDto);
         return "redirect:/registration?success";
     }
 }
