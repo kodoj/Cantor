@@ -33,7 +33,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     public User save(UserRegistrationDto userRegistrationDto) {
         User user = new User();
-        user.setWalletId(createUserWalletId(userRegistrationDto));
+        int walletId = createUserWalletId(userRegistrationDto);
+        user.setWallet(walletRepository.getOne(walletId));
         user.setName(userRegistrationDto.getFirstName());
         user.setSurname(userRegistrationDto.getSurname());
         user.setEmail(userRegistrationDto.getEmail());
@@ -44,13 +45,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private int createUserWalletId(UserRegistrationDto userRegistrationDto) {
         Wallet wallet = new Wallet();
-        wallet.setUSD(userRegistrationDto.getUSD());
-        wallet.setEUR(userRegistrationDto.getEUR());
-        wallet.setCHF(userRegistrationDto.getCHF());
-        wallet.setRUB(userRegistrationDto.getRUB());
-        wallet.setCZK(userRegistrationDto.getCZK());
-        wallet.setGBP(userRegistrationDto.getGBP());
-        wallet.setPLN(userRegistrationDto.getPLN());
+        wallet.setUSD(userRegistrationDto.getUsd());
+        wallet.setEUR(userRegistrationDto.getEur());
+        wallet.setCHF(userRegistrationDto.getChf());
+        wallet.setRUB(userRegistrationDto.getRub());
+        wallet.setCZK(userRegistrationDto.getCzk());
+        wallet.setGBP(userRegistrationDto.getGbp());
+        wallet.setPLN(userRegistrationDto.getPln());
 
         return saveWallet(wallet);
     }

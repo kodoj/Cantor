@@ -33,19 +33,19 @@ public class UserRegistrationDto {
     @NotEmpty
     private String confirmEmail;
 
-    private BigDecimal USD;
+    private double usd;
 
-    private BigDecimal EUR;
+    private double eur;
 
-    private BigDecimal CHF;
+    private double chf;
 
-    private BigDecimal RUB;
+    private double rub;
 
-    private BigDecimal CZK;
+    private double czk;
 
-    private BigDecimal GBP;
+    private double gbp;
 
-    private BigDecimal PLN;
+    private double pln;
 
     @AssertTrue
     private Boolean terms;
@@ -106,59 +106,59 @@ public class UserRegistrationDto {
         this.terms = terms;
     }
 
-    public BigDecimal getUSD() {
-        return USD;
+    public double getUsd() {
+        return usd;
     }
 
-    public void setUSD(BigDecimal USD) {
-        this.USD = USD;
+    public void setUsd(double usd) {
+        this.usd = usd;
     }
 
-    public BigDecimal getEUR() {
-        return EUR;
+    public double getEur() {
+        return eur;
     }
 
-    public void setEUR(BigDecimal EUR) {
-        this.EUR = EUR;
+    public void setEur(double eur) {
+        this.eur = eur;
     }
 
-    public BigDecimal getCHF() {
-        return CHF;
+    public double getChf() {
+        return chf;
     }
 
-    public void setCHF(BigDecimal CHF) {
-        this.CHF = CHF;
+    public void setChf(double chf) {
+        this.chf = chf;
     }
 
-    public BigDecimal getRUB() {
-        return RUB;
+    public double getRub() {
+        return rub;
     }
 
-    public void setRUB(BigDecimal RUB) {
-        this.RUB = RUB;
+    public void setRub(double rub) {
+        this.rub = rub;
     }
 
-    public BigDecimal getCZK() {
-        return CZK;
+    public double getCzk() {
+        return czk;
     }
 
-    public void setCZK(BigDecimal CZK) {
-        this.CZK = CZK;
+    public void setCzk(double czk) {
+        this.czk = czk;
     }
 
-    public BigDecimal getGBP() {
-        return GBP;
+    public double getGbp() {
+        return gbp;
     }
 
-    public void setGBP(BigDecimal GBP) {
-        this.GBP = GBP;
+    public void setGbp(double gbp) {
+        this.gbp = gbp;
     }
 
-    public BigDecimal getPLN() {
-        return PLN;
+    public double getPln() {
+        return pln;
     }
 
-    public void setPLN(BigDecimal PLN) {
-        this.PLN = PLN;
+    public void setPln(double pln) {
+        this.pln = pln;
     }
 }

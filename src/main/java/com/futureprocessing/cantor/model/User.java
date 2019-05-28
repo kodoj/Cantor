@@ -17,10 +17,10 @@ public class User {
     @Column(name = "surname")
     private String surname;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "wallet_id", referencedColumnName = "wallet_id")
-    private int walletId;
+    @JoinColumn(name = "wallet_id")
+    private Wallet wallet;
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
@@ -36,8 +36,8 @@ public class User {
         this.id = user.getId();
         this.name = user.getName();
         this.surname = user.getSurname();
-        this.walletId = user.getWalletId();
-        this.active = user.isActive();
+        this.wallet = user.getWallet();
+        this.active = true;
         this.roles = user.getRoles();
         this.email = user.getEmail();
         this.password = user.getPassword();
@@ -67,12 +67,12 @@ public class User {
         this.surname = surname;
     }
 
-    public int getWalletId() {
-        return walletId;
+    public Wallet getWallet() {
+        return wallet;
     }
 
-    public void setWalletId(int walletId) {
-        this.walletId = walletId;
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 
     public boolean isActive() {
