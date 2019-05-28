@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -45,13 +46,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private int createUserWalletId(UserRegistrationDto userRegistrationDto) {
         Wallet wallet = new Wallet();
-        wallet.setUSD(userRegistrationDto.getUsd());
-        wallet.setEUR(userRegistrationDto.getEur());
-        wallet.setCHF(userRegistrationDto.getChf());
-        wallet.setRUB(userRegistrationDto.getRub());
-        wallet.setCZK(userRegistrationDto.getCzk());
-        wallet.setGBP(userRegistrationDto.getGbp());
-        wallet.setPLN(userRegistrationDto.getPln());
+        wallet.setUSD(new BigDecimal(userRegistrationDto.getUsd()));
+        wallet.setEUR(new BigDecimal(userRegistrationDto.getEur()));
+        wallet.setCHF(new BigDecimal(userRegistrationDto.getChf()));
+        wallet.setRUB(new BigDecimal(userRegistrationDto.getRub()));
+        wallet.setCZK(new BigDecimal(userRegistrationDto.getCzk()));
+        wallet.setGBP(new BigDecimal(userRegistrationDto.getGbp()));
+        wallet.setPLN(new BigDecimal(userRegistrationDto.getPln()));
 
         return saveWallet(wallet);
     }
