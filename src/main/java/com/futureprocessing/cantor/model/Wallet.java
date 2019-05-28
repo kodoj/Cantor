@@ -102,7 +102,7 @@ public class Wallet {
         return walletIdTracker;
     }
 
-    public void walletIdTrackerPlusOne() {
+    public static void walletIdTrackerPlusOne() {
         walletIdTracker++;
     }
 }
