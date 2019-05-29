@@ -15,9 +15,11 @@
                 <span class = "title">Exchange</span>
             </div>
             <div class = "navbar-right-side">
-                <span class = "user">Logged in as </span>
+                <span class = "user">Logged in as</span>
                 <button type="button" class = "settings-button"></button>
-                <button type="button" class = "logout-button"></button>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class = "settings-button" value="Sign Out"/>
+                </form>
             </div>
         </div>
 
