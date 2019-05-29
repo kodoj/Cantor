@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>Cantor for Future Processing by Kodoj</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/css/cantor.css">
+</head>
+
+<body>
+    <div class = "main-container">
+        <div class = "navbar">
+            <div class = "navbar-left-side">
+                <span class = "title">Exchange</span>
+            </div>
+            <div class = "navbar-right-side">
+                <span class = "user">Logged in as </span>
+                <button type="button" class = "settings-button"></button>
+                <button type="button" class = "logout-button"></button>
+            </div>
+        </div>
+
+        <div class = "tables">
+            <table class = "main-table">
+                <tr>
+                    <th colspan="4" class = "table-title">Currencies</th>
+                </tr>
+                <tr class = "table-nav">
+                    <td>Currency</td>
+                    <td>Unit</td>
+                    <td>Value</td>
+                    <td>Actions</td>
+                </tr>
+                <tr>
+                    <td>USD</td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id = "buy-usd" class = "actions-button">Buy</button></td>
+                </tr>
+                <tr>
+                    <td>EUR</td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id = "buy-eur" class = "actions-button">Buy</button></td>
+                </tr>
+                <tr>
+                    <td>CHF</td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id = "buy-chf" class = "actions-button">Buy</button></td>
+                </tr>
+                <tr>
+                    <td>RUB</td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id = "buy-rub" class = "actions-button">Buy</button></td>
+                </tr>
+                <tr>
+                    <td>CZK</td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id = "buy-czk" class = "actions-button">Buy</button></td>
+                </tr>
+                <tr>
+                    <td>GBP</td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" id = "buy-gbp" class = "actions-button">Buy</button></td>
+                </tr>
+            </table>
+            <div class = "tables">
+                <table class = "main-table">
+                    <tr>
+                        <th colspan="5" class = "table-title">My Wallet</th>
+                    </tr>
+                    <tr class = "table-nav">
+                        <td>Currency</td>
+                        <td>Unit price</td>
+                        <td>Amount</td>
+                        <td>Value</td>
+                        <td>Actions</td>
+                    </tr>
+                    <tr>
+                        <td>USD</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id = "sell-usd" class = "actions-button">Sell</button></td>
+                    </tr>
+                    <tr>
+                        <td>EUR</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id = "sell-eur" class = "actions-button">Sell</button></td>
+                    </tr>
+                    <tr>
+                        <td>CHF</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id = "sell-chf" class = "actions-button">Sell</button></td>
+                    </tr>
+                    <tr>
+                        <td>RUB</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id = "sell-rub" class = "actions-button">Sell</button></td>
+                    </tr>
+                    <tr>
+                        <td>CZK</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id = "sell-czk" class = "actions-button">Sell</button></td>
+                    </tr>
+                    <tr>
+                        <td>GBP</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" id = "sell-gbp" class = "actions-button">Sell</button></td>
+                    </tr>
+                    <tr>
+                        <th colspan="5"></th>
+                    </tr>
+                    <tr>
+                        <th colspan="5">Available PLN: </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
