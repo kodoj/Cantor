@@ -5,7 +5,7 @@
     <title>Cantor for Future Processing by Kodoj</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../static/css/cantor.css">
+    <link rel="stylesheet" th:href="@{/css/cantor.css}">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
                 <span class = "user">Logged in as</span>
                 <button type="button" class = "settings-button"></button>
                 <form th:action="@{/logout}" method="post">
-                    <input type="submit" class = "settings-button" value="Sign Out"/>
+                    <input type="submit" class = "logout-button" value="Sign Out"/>
                 </form>
             </div>
         </div>

@@ -46,6 +46,9 @@ th, td {
     font-size: 14px;
     padding-top: 8px;
     margin-right: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
 }
 
 .user {
