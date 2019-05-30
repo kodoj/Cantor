@@ -22,7 +22,7 @@
                 <span class = "title">Exchange</span>
             </div>
             <div class = "navbar-right-side">
-                <span class = "user">Logged in as</span>
+                <span class = "user">Logged in as <a th:text="${currentUser.getName()}"></a></span>
                 <button type="button" class = "settings-button"></button>
                 <form th:action="@{/logout}" method="post">
                     <input type="submit" class = "logout-button" value="Sign Out"/>
@@ -93,50 +93,50 @@
                     <tr>
                         <td>USD</td>
                         <td id = "USD-sell-value"></td>
-                        <td></td>
-                        <td></td>
+                        <td id = "USD-amount"><a th:text="${currentUser.getWallet().getUSD()}"></a></td>
+                        <td id = "USD-value"></td>
                         <td><button type="button" id = "sell-usd" class = "actions-button">Sell</button></td>
                     </tr>
                     <tr>
                         <td>EUR</td>
                         <td id = "EUR-sell-value"></td>
-                        <td></td>
-                        <td></td>
+                        <td id = "EUR-amount"><a th:text="${currentUser.getWallet().getEUR()}"></a></td>
+                        <td id = "EUR-value"></td>
                         <td><button type="button" id = "sell-eur" class = "actions-button">Sell</button></td>
                     </tr>
                     <tr>
                         <td>CHF</td>
                         <td id = "CHF-sell-value"></td>
-                        <td></td>
-                        <td></td>
+                        <td id = "CHF-amount"><a th:text="${currentUser.getWallet().getCHF()}"></a></td>
+                        <td id = "CHF-value"></td>
                         <td><button type="button" id = "sell-chf" class = "actions-button">Sell</button></td>
                     </tr>
                     <tr>
                         <td>RUB</td>
                         <td id = "RUB-sell-value"></td>
-                        <td></td>
-                        <td></td>
+                        <td id = "RUB-amount"><a th:text="${currentUser.getWallet().getRUB()}"></a></td>
+                        <td id = "RUB-value"></td>
                         <td><button type="button" id = "sell-rub" class = "actions-button">Sell</button></td>
                     </tr>
                     <tr>
                         <td>CZK</td>
                         <td id = "CZK-sell-value"></td>
-                        <td></td>
-                        <td></td>
+                        <td id = "CZK-amount"><a th:text="${currentUser.getWallet().getCZK()}"></a></td>
+                        <td id = "CZK-value"></td>
                         <td><button type="button" id = "sell-czk" class = "actions-button">Sell</button></td>
                     </tr>
                     <tr>
                         <td>GBP</td>
                         <td id = "GBP-sell-value"></td>
-                        <td></td>
-                        <td></td>
+                        <td id = "GBP-amount"><a th:text="${currentUser.getWallet().getGBP()}"></a></td>
+                        <td id = "GBP-value"></td>
                         <td><button type="button" id = "sell-gbp" class = "actions-button">Sell</button></td>
                     </tr>
                     <tr>
                         <th colspan="5"></th>
                     </tr>
                     <tr>
-                        <th colspan="5">Available PLN: </th>
+                        <th colspan="5">Available PLN: <a th:text="${currentUser.getWallet().getPLN()}"></a></th>
                     </tr>
                 </table>
             </div>
