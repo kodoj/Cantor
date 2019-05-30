@@ -33,6 +33,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         return optionalUser.map(CustomUserDetails::new).get();
     }
 
+    public void saveUser(User user) {
+        usersRepository.save(user);
+    }
+
     public void saveUserWithRole(UserRegistrationDto userRegistrationDto) {
         User currentUser = addUserToDatabase(userRegistrationDto);
         UserRoles userRoles = new UserRoles();

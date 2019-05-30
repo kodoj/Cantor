@@ -28,7 +28,7 @@ th, td {
 }
 
 .navbar {
-    width: 97%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
@@ -40,6 +40,7 @@ th, td {
 
 .navbar-left-side {
     margin: 15px;
+    border: black;
 }
 
 .navbar-right-side {
@@ -74,6 +75,24 @@ th, td {
     width: 30px;
     height: 30px;
     border: none;
+}
+
+.transaction {
+    background-color: white;
+    max-width: 98%;
+    min-width: 200px;
+    min-height: 50px;
+    border: 1px solid black;
+    margin: 10px;
+    line-height: 50px;
+    text-align: center;
+}
+
+#transaction {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+
 }
 
 .tables {

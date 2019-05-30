@@ -12,6 +12,7 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
     <script type="text/javascript" th:src="@{/js/updateDataFromFPServer.js}"></script>
+    <script type="text/javascript" th:src="@{/js/sellTransaction.js}"></script>
 
 </head>
 
@@ -30,6 +31,8 @@
             </div>
         </div>
 
+        <div class = "transaction"></div>
+
         <div class = "tables">
             <table class = "main-table buy-table">
                 <tr>
@@ -43,39 +46,45 @@
                 </tr>
                 <tr>
                     <td>USD</td>
-                    <td>1</td>
+                    <td id = "USD-unit">1</td>
                     <td id = "USD-buy-value"></td>
-                    <td><button type="button" id = "buy-usd" class = "actions-button">Buy</button></td>
+                    <td><button type="button" data-currency = "USD" id = "USD-buy"
+                                class = "actions-button">Buy</button></td>
                 </tr>
                 <tr>
                     <td>EUR</td>
-                    <td>1</td>
+                    <td id = "EUR-unit">1</td>
                     <td id = "EUR-buy-value"></td>
-                    <td><button type="button" id = "buy-eur" class = "actions-button">Buy</button></td>
+                    <td><button type="button" data-currency = "EUR" id = "EUR-buy"
+                                class = "actions-button">Buy</button></td>
                 </tr>
                 <tr>
                     <td>CHF</td>
-                    <td>1</td>
+                    <td id = "CHF-unit">1</td>
                     <td id = "CHF-buy-value"></td>
-                    <td><button type="button" id = "buy-chf" class = "actions-button">Buy</button></td>
+                    <td><button type="button" data-currency = "CHF" id = "CHF-buy"
+                                class = "actions-button">Buy</button></td>
                 </tr>
                 <tr>
                     <td>RUB</td>
-                    <td>100</td>
+                    <td id = "RUB-unit">100</td>
                     <td id = "RUB-buy-value"></td>
-                    <td><button type="button" id = "buy-rub" class = "actions-button">Buy</button></td>
+                    <td><button type="button" data-currency = "RUB" id = "RUB-buy"
+                                class = "actions-button">Buy</button></td>
                 </tr>
                 <tr>
                     <td>CZK</td>
-                    <td>100</td>
+                    <td id = "CZK-unit">100</td>
                     <td id = "CZK-buy-value"></td>
-                    <td><button type="button" id = "buy-czk" class = "actions-button">Buy</button></td>
+                    <td><button type="button" data-currency = "CZK" id = "CZK-buy"
+                                class = "actions-button">Buy</button></td>
                 </tr>
                 <tr>
                     <td>GBP</td>
-                    <td>1</td>
+                    <td id = "GBP-unit">1</td>
                     <td id = "GBP-buy-value"></td>
-                    <td><button type="button" id = "buy-gbp" class = "actions-button">Buy</button></td>
+                    <td><button type="button" data-currency = "GBP" id = "GBP-buy"
+                                class = "actions-button">Buy</button></td>
                 </tr>
             </table>
             <div class = "tables">
@@ -95,48 +104,55 @@
                         <td id = "USD-sell-value"></td>
                         <td id = "USD-amount"><a th:text="${currentUser.getWallet().getUSD()}"></a></td>
                         <td id = "USD-value"></td>
-                        <td><button type="button" id = "sell-usd" class = "actions-button">Sell</button></td>
+                        <td><button type="button" data-currency = "USD" id = "USD-sell"
+                                    class = "actions-button sellBtn">Sell</button></td>
                     </tr>
                     <tr>
                         <td>EUR</td>
                         <td id = "EUR-sell-value"></td>
                         <td id = "EUR-amount"><a th:text="${currentUser.getWallet().getEUR()}"></a></td>
                         <td id = "EUR-value"></td>
-                        <td><button type="button" id = "sell-eur" class = "actions-button">Sell</button></td>
+                        <td><button type="button" data-currency = "EUR" id = "EUR-sell"
+                                    class = "actions-button sellBtn">Sell</button></td>
                     </tr>
                     <tr>
                         <td>CHF</td>
                         <td id = "CHF-sell-value"></td>
                         <td id = "CHF-amount"><a th:text="${currentUser.getWallet().getCHF()}"></a></td>
                         <td id = "CHF-value"></td>
-                        <td><button type="button" id = "sell-chf" class = "actions-button">Sell</button></td>
+                        <td><button type="button" data-currency = "CHF" id = "CHF-sell"
+                                    class = "actions-button sellBtn">Sell</button></td>
                     </tr>
                     <tr>
                         <td>RUB</td>
                         <td id = "RUB-sell-value"></td>
                         <td id = "RUB-amount"><a th:text="${currentUser.getWallet().getRUB()}"></a></td>
                         <td id = "RUB-value"></td>
-                        <td><button type="button" id = "sell-rub" class = "actions-button">Sell</button></td>
+                        <td><button type="button" data-currency = "RUB" id = "RUB-sell"
+                                    class = "actions-button sellBtn">Sell</button></td>
                     </tr>
                     <tr>
                         <td>CZK</td>
                         <td id = "CZK-sell-value"></td>
                         <td id = "CZK-amount"><a th:text="${currentUser.getWallet().getCZK()}"></a></td>
                         <td id = "CZK-value"></td>
-                        <td><button type="button" id = "sell-czk" class = "actions-button">Sell</button></td>
+                        <td><button type="button" data-currency = "CZK" id = "CZK-sell"
+                                    class = "actions-button sellBtn">Sell</button></td>
                     </tr>
                     <tr>
                         <td>GBP</td>
                         <td id = "GBP-sell-value"></td>
                         <td id = "GBP-amount"><a th:text="${currentUser.getWallet().getGBP()}"></a></td>
                         <td id = "GBP-value"></td>
-                        <td><button type="button" id = "sell-gbp" class = "actions-button">Sell</button></td>
+                        <td><button type="button" data-currency = "GBP" id = "GBP-sell"
+                                    class = "actions-button sellBtn">Sell</button></td>
                     </tr>
                     <tr>
                         <th colspan="5"></th>
                     </tr>
                     <tr>
-                        <th colspan="5">Available PLN: <a th:text="${currentUser.getWallet().getPLN()}"></a></th>
+                        <th colspan="5">Available PLN: <a data-currency = "PLN" id = "PLN-wallet"
+                                                          th:text="${currentUser.getWallet().getPLN()}"></a></th>
                     </tr>
                 </table>
             </div>
