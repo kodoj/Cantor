@@ -63,8 +63,8 @@ function acceptTransaction() {
         usd : passedCurrency === "USD" ? currentUSD - passedSoldUnits : currentUSD,
         eur : passedCurrency === "EUR" ? currentEUR - passedSoldUnits : currentEUR,
         chf : passedCurrency === "CHF" ? currentCHF - passedSoldUnits : currentCHF,
-        rub : passedCurrency === "RUB" ? currentRUB - passedSoldUnits : currentRUB,
-        czk : passedCurrency === "CZK" ? currentCZK - passedSoldUnits : currentCZK,
+        rub : passedCurrency === "RUB" ? currentRUB - (passedSoldUnits * 100) : currentRUB,
+        czk : passedCurrency === "CZK" ? currentCZK - (passedSoldUnits * 100) : currentCZK,
         gbp : passedCurrency === "GBP" ? currentGBP - passedSoldUnits : currentGBP,
         pln : (currentPLN * 1) + (passedGainingPLN * 1)
     };

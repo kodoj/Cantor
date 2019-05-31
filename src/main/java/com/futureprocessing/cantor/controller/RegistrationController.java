@@ -1,8 +1,6 @@
 package com.futureprocessing.cantor.controller;
 
 import javax.validation.Valid;
-
-import com.futureprocessing.cantor.model.User;
 import com.futureprocessing.cantor.model.UserRegistrationDto;
 import com.futureprocessing.cantor.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;

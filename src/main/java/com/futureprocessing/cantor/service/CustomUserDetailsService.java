@@ -5,7 +5,6 @@ import com.futureprocessing.cantor.repository.UserRolesRepository;
 import com.futureprocessing.cantor.repository.UsersRepository;
 import com.futureprocessing.cantor.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,9 +33,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         return optionalUser.map(CustomUserDetails::new).get();
     }
 
-    public void saveUser(User user) {
-        usersRepository.save(user);
-    }
 
     public void saveUserWithRole(UserRegistrationDto userRegistrationDto) {
         User currentUser = addUserToDatabase(userRegistrationDto);
@@ -46,11 +42,13 @@ public class CustomUserDetailsService implements UserDetailsService {
         userRolesRepository.save(userRoles);
     }
 
+
     public void updateUserWallet(Wallet wallet, UserDetails currentUser) {
         User userToUpdate = (User) loadUserByUsername(currentUser.getUsername());
         Wallet newWallet = prepareWallet(wallet, userToUpdate);
         usersRepository.save(prepareUser(userToUpdate, newWallet));
     }
+
 
     private User prepareUser(User userToUpdate, Wallet newWallet) {
         User newUser = new User();
@@ -65,6 +63,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return newUser;
     }
 
+
     private Wallet prepareWallet(Wallet wallet, User userToUpdate) {
         Wallet newWallet = userToUpdate.getWallet();
         newWallet.setPLN(wallet.getPLN());
@@ -77,6 +76,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return newWallet;
     }
 
+
     private User addUserToDatabase(UserRegistrationDto userRegistrationDto) {
         User user = new User();
         user.setWallet(saveUserWallet(userRegistrationDto));
@@ -87,6 +87,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return usersRepository.save(user);
     }
+
 
     private Wallet saveUserWallet(UserRegistrationDto userRegistrationDto) {
         Wallet wallet = new Wallet();
