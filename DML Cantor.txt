@@ -1,0 +1,16 @@
+INSERT INTO roles(role_id, role_name)
+VALUES (1, 'USER');
+
+INSERT INTO currencies(currency_id, USD, EUR, CHF, RUB, CZK, GBP)
+VALUES (1, 100000, 100000, 100000, 100000, 100000, 100000);
+
+INSERT INTO wallets(wallet_id, usd, eur, chf, rub, czk, gbp, pln)
+VALUES (1, 0, 500, 25, 0, 300, 0, 1000);
+
+INSERT INTO users(user_id, name, surname, wallet_id, email, password)
+VALUES (1, 'Krzysztof', 'Odoj', 1, 'kodoj2@gmail.com', 'admin');
+
+INSERT INTO user_role(user_id, role_id, user_roles_id)
+VALUES (1, 1, 1);
+
+create sequence public.hibernate_sequence;
