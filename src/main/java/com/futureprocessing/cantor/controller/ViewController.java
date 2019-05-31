@@ -21,7 +21,7 @@ public class ViewController {
 
     @PreAuthorize("hasRole('USER')")
     @GetMapping
-    public String getCantor(Model model, @AuthenticationPrincipal UserDetails currentUser ) {
+    public String getCantor(Model model, @AuthenticationPrincipal UserDetails currentUser) {
         User user = (User) customUserDetailsService.loadUserByUsername(currentUser.getUsername());
         model.addAttribute("currentUser", user);
         return "cantor";

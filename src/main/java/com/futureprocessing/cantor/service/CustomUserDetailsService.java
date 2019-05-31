@@ -5,6 +5,7 @@ import com.futureprocessing.cantor.repository.UserRolesRepository;
 import com.futureprocessing.cantor.repository.UsersRepository;
 import com.futureprocessing.cantor.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -43,6 +44,37 @@ public class CustomUserDetailsService implements UserDetailsService {
         userRoles.setUser_id(currentUser.getId());
         userRoles.setRoleId(1);
         userRolesRepository.save(userRoles);
+    }
+
+    public void updateUserWallet(Wallet wallet, UserDetails currentUser) {
+        User userToUpdate = (User) loadUserByUsername(currentUser.getUsername());
+        Wallet newWallet = prepareWallet(wallet, userToUpdate);
+        usersRepository.save(prepareUser(userToUpdate, newWallet));
+    }
+
+    private User prepareUser(User userToUpdate, Wallet newWallet) {
+        User newUser = new User();
+        newUser.setWallet(newWallet);
+        newUser.setName(userToUpdate.getName());
+        newUser.setSurname(userToUpdate.getSurname());
+        newUser.setEmail(userToUpdate.getEmail());
+        newUser.setPassword(userToUpdate.getPassword());
+        newUser.setActive(userToUpdate.isActive());
+        newUser.setId(userToUpdate.getId());
+        newUser.setRoles(userToUpdate.getRoles());
+        return newUser;
+    }
+
+    private Wallet prepareWallet(Wallet wallet, User userToUpdate) {
+        Wallet newWallet = userToUpdate.getWallet();
+        newWallet.setPLN(wallet.getPLN());
+        newWallet.setUSD(wallet.getUSD());
+        newWallet.setEUR(wallet.getEUR());
+        newWallet.setCHF(wallet.getCHF());
+        newWallet.setRUB(wallet.getRUB());
+        newWallet.setCZK(wallet.getCZK());
+        newWallet.setGBP(wallet.getGBP());
+        return newWallet;
     }
 
     private User addUserToDatabase(UserRegistrationDto userRegistrationDto) {

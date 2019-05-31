@@ -34,6 +34,10 @@ public class Wallet {
         return wallet_id;
     }
 
+    public void setWallet_id(int wallet_id) {
+        this.wallet_id = wallet_id;
+    }
+
     public BigDecimal getUSD() {
         return USD;
     }
