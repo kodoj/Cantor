@@ -1,7 +1,7 @@
 function cantorValues() {
     console.log('cantorValues updated')
     $.ajax({
-        url: "http://webtask.future-processing.com:8068/currencies",
+        url: "censored",
         type: 'GET',
         success: function (result) {
             for (let i = 0; i < result.items.length; i++) {
